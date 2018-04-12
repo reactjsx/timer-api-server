@@ -6,6 +6,8 @@ const app = express();
 mongoose.connect('mongodb://techexplained:thaonguyen2604@ds143099.mlab.com:43099/react_timer_tracking_app');
 const Timer = require('./models/timer');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
