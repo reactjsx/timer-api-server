@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -37,6 +38,7 @@ app.post('/api/timers/start', function(req, res) {
       foundTimer.save(function(err) {
         console.log(err);
       });
+      res.json({});
     }
   });
 });
@@ -51,8 +53,10 @@ app.post('/api/timers/stop', function(req, res) {
       foundTimer.save(function(err) {
         console.log(err);
       });
+      res.json({});
     }
   });
+  
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
