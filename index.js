@@ -3,7 +3,7 @@ const express = require('express'),
       mongoose = require('mongoose');
       
 const app = express();
-mongoose.connect('mongodb://techexplained:thaonguyen2604@ds241039.mlab.com:41039/timer_tracking_app');
+mongoose.connect('mongodb://techexplained:thaonguyen2604@ds241039.mlab.com:41039/react_timer_tracking_app');
 const Timer = require('./models/timer');
 
 app.use(function(req, res, next) {
