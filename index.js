@@ -41,6 +41,20 @@ app.post('/api/timers/start', function(req, res) {
   });
 });
 
+app.post('/api/timers/stop', function(req, res) {
+  Timer.findOne({id: req.body.id}, function(err, foundTimer) {
+    if (err) {
+      console.log(err);
+    } else {
+      foundTimer.elapsedTime += req.body.stopTime - foundTimer.startedFrom;
+      foundTimer.startedFrom = null;
+      foundTimer.save(function(err) {
+        console.log(err);
+      });
+    }
+  });
+});
+
 app.listen(process.env.PORT, process.env.IP, function() {
   console.log('Server started at: ', process.env.IP + ':' + process.env.PORT);
 })
