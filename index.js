@@ -26,6 +26,19 @@ app.get('/api/timers', function(req, res) {
   });
 });
 
+app.post('/api/timers/start', function(req, res) {
+  Timer.findOne({id: req.body.id}, function(err, foundTimer) {
+    if (err) {
+      console.log(err);
+    } else {
+      foundTimer.startedFrom = req.body.startedFrom;
+      foundTimer.save(function(err) {
+        console.log(err);
+      });
+    }
+  });
+});
+
 app.listen(process.env.PORT, process.env.IP, function() {
   console.log('Server started at: ', process.env.IP + ':' + process.env.PORT);
 })
