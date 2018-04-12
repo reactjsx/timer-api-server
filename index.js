@@ -48,7 +48,7 @@ app.post('/api/timers/stop', function(req, res) {
     if (err) {
       console.log(err);
     } else {
-      foundTimer.elapsedTime += req.body.stopTime - foundTimer.startedFrom;
+      foundTimer.elapsedTime = req.body.elapsedTime;
       foundTimer.startedFrom = null;
       foundTimer.save(function(err) {
         console.log(err);
