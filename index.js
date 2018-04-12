@@ -6,6 +6,12 @@ const app = express();
 mongoose.connect('mongodb://techexplained:thaonguyen2604@ds241039.mlab.com:41039/timer_tracking_app');
 const Timer = require('./models/timer');
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.get('/', function(req, res) {
   res.redirect('/api/timers');
 });
