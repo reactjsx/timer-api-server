@@ -29,6 +29,22 @@ app.get('/api/timers', function(req, res) {
   });
 });
 
+app.post('/api/timers', function(req, res) {
+  const newTimer = {
+    id: req.body.id,
+    title: req.body.title,
+    project: req.body.project,
+    elapsedTime: req.body.elapsedTime,
+    startedFrom: req.body.startedFrom
+  };
+  Timer.create(newTimer, function(err, timer) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  res.json({});
+});
+
 app.post('/api/timers/start', function(req, res) {
   Timer.findOne({id: req.body.id}, function(err, foundTimer) {
     if (err) {
