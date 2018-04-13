@@ -45,6 +45,15 @@ app.post('/api/timers', function(req, res) {
   res.json({});
 });
 
+app.delete('/api/timers', function(req, res) {
+  Timer.remove({id: req.body.id}, function(err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  res.json({});
+});
+
 app.post('/api/timers/start', function(req, res) {
   Timer.findOne({id: req.body.id}, function(err, foundTimer) {
     if (err) {
