@@ -5,7 +5,8 @@ const timerSchema = new mongoose.Schema({
     title: String,
     project: String,
     startedFrom: Number,
-    elapsedTime: Number
+    elapsedTime: Number,
+    doneAt: Number
 });
 
 module.exports = mongoose.model('Timer', timerSchema);
