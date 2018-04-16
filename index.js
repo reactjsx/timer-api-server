@@ -35,7 +35,8 @@ app.post('/api/timers', function(req, res) {
     title: req.body.title,
     project: req.body.project,
     elapsedTime: req.body.elapsedTime,
-    startedFrom: req.body.startedFrom
+    startedFrom: req.body.startedFrom,
+    doneAt: req.body.doneAt
   };
   Timer.create(newTimer, function(err, timer) {
     if (err) {
