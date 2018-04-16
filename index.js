@@ -92,6 +92,9 @@ app.post('/api/timers/stop', function(req, res) {
     } else {
       foundTimer.elapsedTime = req.body.elapsedTime;
       foundTimer.startedFrom = null;
+      if (req.body.doneAt) {
+        foundTimer.doneAt = req.body.doneAt;
+      }
       foundTimer.save(function(err) {
         console.log(err);
       });
